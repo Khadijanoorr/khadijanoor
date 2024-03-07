@@ -3,13 +3,19 @@ package com.example.khadijanoor;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 public class Details extends AppCompatActivity {
-    TextView tv1,tv2;
+    TextView tv1;
+    TextView tv2;
     ImageView img;
+    Model model;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -17,11 +23,21 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        img=(ImageView) findViewById(R.id.imagedes);
-        tv1=(TextView) findViewById(R.id.name);
-        tv2=(TextView) findViewById(R.id.namedes2);
-        img.setImageResource(getIntent().getIntExtra("imagename",0));
-        tv1.setText(getIntent().getStringExtra("header"));
-        tv2.setText(getIntent().getStringExtra("description"));
+        tv1 = findViewById(R.id.name1);
+        img = findViewById(R.id.image);
+        tv2 = findViewById(R.id.name2);
+
+        model = new Gson().fromJson(getIntent().getStringExtra("data"), Model.class);
+
+        tv1.setText(model.getHeaderTitle());
+        img.setImageResource(model.getImagreName());
+
+        // Display the description if available, otherwise hide the TextView
+        if (model.getDescription() != null && !model.getDescription().isEmpty()) {
+            tv2.setText(model.getDescription());
+            tv2.setVisibility(View.VISIBLE);
+        } else {
+            tv2.setVisibility(View.GONE);
+        }
     }
 }

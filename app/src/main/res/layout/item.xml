@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     app:cardCornerRadius="5dp"
     android:elevation="4dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -15,7 +17,7 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="400dp"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/donut1" />
@@ -36,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Chocolate glazed donut topped with  crushed hazelnuts"
+            android:text="DONUTS"
             android:textColor="#73480B"
             android:layout_below="@+id/name1"
             android:fontFamily="cursive"
